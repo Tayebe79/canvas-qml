@@ -3,20 +3,22 @@
 var component;
 var sprite;
 
-function createSpriteObjects() {
+function createSpriteObjects(parentObj, mouseX, mouseY) {
     component = Qt.createComponent("rectangle1.qml");
     if (component.status === Component.Ready)
-        finishCreation();
+        finishCreation(mouseX, mouseY);
     else
         component.statusChanged.connect(finishCreation);
 }
 
-function finishCreation() {
+function finishCreation(mouseX, mouseY) {
     if (component.status === Component.Ready) {
-        sprite = component.createObject(mainRec, {x: 100, y: 100});
+        sprite = component.createObject(mainRec, {x: mouseX, y: mouseY});
         if (sprite === null) {
             // Error Handling
             console.log("Error creating object");
+        } else {
+//            sprite.opacity = 1;
         }
     } else if (component.status === Component.Error) {
         // Error Handling
