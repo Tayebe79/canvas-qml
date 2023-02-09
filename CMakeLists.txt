@@ -15,10 +15,18 @@ qt_add_executable(appqtquick1
 qt_add_qml_module(appqtquick1
     URI qtquick1
     VERSION 1.0
-    QML_FILES main.qml
-    CalcCore.qml
-    rectangle1.qml
-    MyScript.js
+    QML_FILES
+        main.qml
+        Rectangle1.qml
+        MyScript.js
+        MButton.qml
+
+    RESOURCES
+        images/trash.png
+#        fonts/Font\ Awesome\ 6\ Pro-Thin-100.otf
+#        fonts/Font\ Awesome\ 6\ Pro-Solid-900.otf
+        fonts/Font\ Awesome\ 6\ Pro-Regular-400.otf
+#        fonts/Font\ Awesome\ 6\ Pro-Light-300.otf
 )
 
 set_target_properties(appqtquick1 PROPERTIES
