@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Core Quick REQUIRED)
 
 qt_add_executable(appqtquick1
     main.cpp
@@ -17,16 +17,18 @@ qt_add_qml_module(appqtquick1
     VERSION 1.0
     QML_FILES
         main.qml
-        Rectangle1.qml
+        View/NodeView.qml
+        View/SceneView.qml
         MyScript.js
         MButton.qml
+        Core/Node.qml
+        Core/NodeManager.qml
+        ColorPicker/ColorItem.qml
+        ColorPicker/ColorPicker.qml
 
     RESOURCES
         images/trash.png
-#        fonts/Font\ Awesome\ 6\ Pro-Thin-100.otf
-#        fonts/Font\ Awesome\ 6\ Pro-Solid-900.otf
         fonts/Font\ Awesome\ 6\ Pro-Regular-400.otf
-#        fonts/Font\ Awesome\ 6\ Pro-Light-300.otf
 )
 
 set_target_properties(appqtquick1 PROPERTIES
@@ -38,7 +40,7 @@ set_target_properties(appqtquick1 PROPERTIES
 )
 
 target_link_libraries(appqtquick1
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick Qt6::Core)
 
 install(TARGETS appqtquick1
     BUNDLE DESTINATION .
