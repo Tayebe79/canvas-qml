@@ -20,30 +20,36 @@ Rectangle {
             cellColor: "red";
             onClicked: {
                 control.colorChanged(cellColor);
-//            textRec.border.color = cellColor
-    //                          colorButton1.controller.color = cellColor
             }
         }
         ColorItem {
             cellColor: "green";
-            onClicked: textRec.border.color = cellColor
+            onClicked: {
+                control.colorChanged(cellColor);
+            }
         }
         ColorItem {
-            cellColor: "blue";
-            onClicked: textRec.border.color = cellColor
+            cellColor: "pink";
+            onClicked: {
+                control.colorChanged(cellColor);
+            }
         }
         ColorItem {
             cellColor: "yellow";
-            onClicked: textRec.border.color = cellColor
+            onClicked: {
+                control.colorChanged(cellColor);
+            }
         }
         ColorItem {
             cellColor: "steelblue";
-            onClicked: textRec.border.color = cellColor
+            onClicked: {
+                control.colorChanged(cellColor);
+            }
         }
         ColorItem {
             cellColor: "black";
             onClicked: {
-                textRec.border.color = cellColor
+                control.colorChanged(cellColor);
             }
         }
     }

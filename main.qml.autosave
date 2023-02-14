@@ -19,7 +19,6 @@ import QtQuick.Window
 // 4- Port
 // 5- scrollbar
 // 6- flickable
-// 7-
 
 ApplicationWindow {
     id: root
