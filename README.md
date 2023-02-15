@@ -1,2 +1,1 @@
-# canvas-qml
-# canvas-qml
+A simple canvas, for thought organization.
