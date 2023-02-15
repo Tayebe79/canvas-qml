@@ -1,4 +1,3 @@
-//import related modules
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Universal
@@ -8,8 +7,45 @@ import QtQuick.Dialogs
 import Qt.labs.platform
 import QtQuick.Window
 
+/*! ***********************************************************************************************
+ * This is tha main application window. A node manager is defined for managin the nodes (cards).
+ * SceneView is defined. It contains the entity of the application. right click to add new cards.
+ * ************************************************************************************************/
 
-//window containing the application
+
+ApplicationWindow {
+    id: root
+    /* Property Declarations
+         * ****************************************************************************************/
+     property NodeManager nodeManager: NodeManager {}
+
+    /* Fonts
+        * ****************************************************************************************/
+    FontLoader {
+        source: "qrc:/qtquick1/fonts/Font Awesome 6 Pro-Regular-400.otf"
+    }
+
+    /* Object Style
+         * ****************************************************************************************/
+    title: qsTr("Canvas")
+    width: 720
+    height: 480
+    color: "#1e1e1e"
+    visible: true
+
+    // Style
+    Universal.theme: Universal.Dark
+    Universal.accent: Universal.Violet
+
+    /* SceneView for the entire application
+         * ****************************************************************************************/
+    SceneView {
+        anchors.fill: parent
+        nodeManager: root.nodeManager
+    }
+
+}
+
 
 
 // tasks:
@@ -22,31 +58,6 @@ import QtQuick.Window
 // 6- flickable (done)
 // 7- dupliacate (done)
 
-//problems: 1- text continue thingy 2- x and y after drag
-
-ApplicationWindow {
-//    flags: Qt.FramelessWindowHint
-    id: root
-        FontLoader {
-            source: "qrc:/qtquick1/fonts/Font Awesome 6 Pro-Regular-400.otf"
-        }
-
-    visible: true
-    Universal.theme: Universal.Dark
-    Universal.accent: Universal.Violet
-    title: qsTr("Canvas")
-    width: 720
-    height: 480
-    color: "#1e1e1e"
-
-    property NodeManager nodeManager: NodeManager {}
-
-    SceneView {
-        anchors.fill: parent
-        nodeManager: root.nodeManager
-    }
-
-}
 //        contentWidth: parent.width * 2
 //        contentHeight: parent.height * 2
 

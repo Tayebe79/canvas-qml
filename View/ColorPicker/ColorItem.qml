@@ -1,11 +1,18 @@
 import QtQuick
 
+/*! ***********************************************************************************************
+ * A color picker containing 6 colors
+ * ************************************************************************************************/
+
 Item {
     id: container
     property alias cellColor: rectangle1.color
+
+    //once the user choses a color, a signal containing that color is sent
     signal clicked(color cellColor)
 
-    width: 25; height: 25
+    width: 25;
+    height: 25
 
     Rectangle {
         id: rectangle1

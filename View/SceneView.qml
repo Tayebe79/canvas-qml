@@ -4,24 +4,41 @@ import QtQuick.Layouts
 import QtQuick.Controls.Universal
 import qtquick1
 import QtQuick.Dialogs
+
+
+/*! ***********************************************************************************************
+ * Sceneview is defined as one flickable object (inside a rectangle).
+ * ************************************************************************************************/
+
+
 Rectangle {
     id: container
+    /* Property Declarations
+         * ****************************************************************************************/
+
+    /* Property Declarations
+         * ****************************************************************************************/
+     property NodeManager nodeManager
+
+    /* Property Style
+         * ****************************************************************************************/
     color: "transparent"
 
-    property NodeManager nodeManager
 
     Flickable{
         id:flickable
         anchors.fill: parent
         contentWidth: parent.width * 2
         contentHeight: parent.height * 2
+        interactive: false
 
+        // Dot Grid Background
         Grid{
-            rows: 100
-            columns: 100
+            rows: 200
+            columns: 200
             spacing: 20
             Repeater {
-                model: 10000
+                model: 40000
                 Rectangle {
                     width: 1; height: 1
                     color: "white"
@@ -30,6 +47,7 @@ Rectangle {
             }
         }
 
+        //Repeater for building the model
         Repeater {
             model: nodeManager.nodes
             delegate: NodeView {
@@ -37,6 +55,7 @@ Rectangle {
             }
         }
 
+        //Right click for adding new cards
         MouseArea {
             acceptedButtons: Qt.RightButton
             anchors.fill: parent
@@ -45,7 +64,7 @@ Rectangle {
             }
         }
 
-
+        //ScrollBars for screen
         ScrollBar.horizontal: ScrollBar {
             id: hbar;
             active: vbar.active
@@ -59,8 +78,6 @@ Rectangle {
             width: 5
         }
 
-
     }
-
 
 }

@@ -5,8 +5,19 @@ import QtQuick.Controls.Universal
 import qtquick1
 import QtQuick.Dialogs
 
+/*! ***********************************************************************************************
+ * The toolbar appearing on top of each node.
+ * From left, first button is to change color.
+ * Second is to make a duplicate.
+ * Third is to disable text editting. It is activated with click and deactivated with double click.
+ * Fourth is for deleting the card completely.
+ * ************************************************************************************************/
+
+
 Rectangle {
     id: toolsItem
+    /* Object Style, anchors and sizing
+         * ****************************************************************************************/
     radius: 5
     height: 34
     width: layout.implicitWidth + 4
@@ -17,33 +28,36 @@ Rectangle {
     opacity: isSelected ? 1 : 0.0
     color: "#1e1e1e"
 
+    //A row of different buttons
     RowLayout {
         id: layout
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         spacing: 3
 
+        //color change
         MButton {
             id: colorButton1
-
-            property int clicker:0
             Layout.preferredHeight: 30
             Layout.preferredWidth: 30
             Layout.topMargin: 2
             Layout.bottomMargin: 2
             text: "\uf53f"
 
+            //color changer appears on one click
             onClicked: {
                 if(isSelected)
                     tangle.visible = true
             }
+
+            //color change dissappears with double click
             onDoubleClicked: {
                 if(isSelected)
                     tangle.visible = false
             }
-
         }
 
+        //Duplicating the card
         MButton {
             text: "\uf24d"
             Layout.preferredHeight: 30
@@ -57,6 +71,7 @@ Rectangle {
             }
         }
 
+        //Locking the card
         MButton {
             text: "\uf30d"
             Layout.preferredHeight: 30
@@ -64,6 +79,7 @@ Rectangle {
             Layout.topMargin: 2
             Layout.bottomMargin: 2
             id: lockButton
+            //Enabling read only
             onClicked:{
                 if(isSelected){
                     if(node){
@@ -72,6 +88,7 @@ Rectangle {
                     }
                 }
             }
+            //disabling read only
             onDoubleClicked:{
                 if(isSelected){
                     if(node){
@@ -82,7 +99,7 @@ Rectangle {
             }
         }
 
-
+        //Delete button
         MButton {
             id: deleteButton
             text: "\uf2ed"
@@ -90,6 +107,7 @@ Rectangle {
             Layout.preferredWidth: 30
             Layout.topMargin: 2
             Layout.bottomMargin: 2
+            //popup appears on click
             onClicked: {
                 if(isSelected)
                     popup1.open()
@@ -115,6 +133,8 @@ Rectangle {
                         anchors.left: parent.left
                         anchors.top: parent.top
                     }
+
+                    //if clicked yes, card is deleted
                     Button {
                         id: yesbutton
                         width: 60
@@ -126,6 +146,8 @@ Rectangle {
                             nodeManager.deleteNode(node.id);
                         }
                     }
+
+                    //if clicked no, popup is closed
                     Button {
                         id: nobutton
                         width: 60
@@ -137,12 +159,13 @@ Rectangle {
                         }
                     }
                 }
+                //if clicked outside popup or the esc key pressed, popup closes
                 closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
             }
         }
     }
 
-
+    //defining a color picker element to be used in the first button
     ColorPicker {
         id: tangle
         anchors.bottom: toolsItem.top
