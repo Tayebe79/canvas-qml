@@ -1,9 +1,12 @@
 import QtQuick
 import QtQuick.Controls
 
+/*! ***********************************************************************************************
+ * Tool bar buttons
+ * ************************************************************************************************/
+
 ToolButton {
     id: control
-//    width: 120
     width: 30
     height: 30
     text: "\uf2ed"
@@ -27,11 +30,8 @@ ToolButton {
         width: control.width
         height: control.height
         radius: 5
-//        color: Qt.darker("#33333333", control.enabled && (control.checked || control.highlighted) ? 1.5 : 1.0)
         color: control.hovered ? "#2f2f2f" : "transparent"
-//        color: control.hovered ? "#c0c0c0" : "#708090"
         opacity: enabled ? 1 : 0.3
-//        color: "transparent"
 //        visible: control.down || (control.enabled && (control.checked || control.highlighted))
         Behavior on color{ColorAnimation{duration: 75}}
     }

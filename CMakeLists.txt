@@ -22,7 +22,7 @@ qt_add_qml_module(appqtquick1
         View/NodeTools.qml
         View/ColorPicker/ColorItem.qml
         View/ColorPicker/ColorPicker.qml
-        MButton.qml
+        View/MButton.qml
         Core/Node.qml
         Core/NodeManager.qml
 
