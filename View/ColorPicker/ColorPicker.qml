@@ -15,7 +15,6 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         spacing: 2
-//        rows: 1; columns: 6; spacing: 2
         ColorItem {
             cellColor: "red";
             onClicked: {

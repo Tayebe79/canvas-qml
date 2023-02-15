@@ -20,16 +20,16 @@ qt_add_qml_module(appqtquick1
         View/NodeView.qml
         View/SceneView.qml
         View/NodeTools.qml
-        MyScript.js
+        View/ColorPicker/ColorItem.qml
+        View/ColorPicker/ColorPicker.qml
         MButton.qml
         Core/Node.qml
         Core/NodeManager.qml
-        ColorPicker/ColorItem.qml
-        ColorPicker/ColorPicker.qml
 
     RESOURCES
         images/dotGrid.jpg
         images/trash.png
+        images/icon.png
         fonts/Font\ Awesome\ 6\ Pro-Regular-400.otf
 )
 

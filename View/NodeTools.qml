@@ -34,7 +34,6 @@ Rectangle {
             text: "\uf53f"
 
             onClicked: {
-                //                popup2.open()
                 if(isSelected)
                     tangle.visible = true
             }
@@ -52,6 +51,10 @@ Rectangle {
             Layout.topMargin: 2
             Layout.bottomMargin: 2
             id: duplicateButton
+            onClicked: {
+                if(isSelected)
+                    nodeManager.duplicate (node.contentText, node.x, node.y, node.color, node.isSelected, node.id, node.justRead)
+            }
         }
 
         MButton {
@@ -142,7 +145,7 @@ Rectangle {
 
     ColorPicker {
         id: tangle
-        anchors.top: toolsItem.bottom
+        anchors.bottom: toolsItem.top
         anchors.topMargin: 5
         anchors.horizontalCenter: toolsItem.horizontalCenter
         visible: false

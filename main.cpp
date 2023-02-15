@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-    app.setWindowIcon(QIcon("C:/Users/mohebbi/Documents/qtquick1/icon.png"));
+    app.setWindowIcon(QIcon("C:/Users/mohebbi/Documents/qtquick1/images/icon.png"));
 
     return app.exec();
 }

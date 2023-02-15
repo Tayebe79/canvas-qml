@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Controls.Universal
 import qtquick1
 import QtQuick.Dialogs
-//import "MyScript.js" as MyScript
+
 
 Rectangle {
 
@@ -21,37 +21,26 @@ Rectangle {
 
     property Node node
 
+    property int tempX
+    property int tempY
+
     property bool isSelected: node.isSelected
+    property bool focusTracker: node.focusTracker
+
+    property bool editMode: false
+
+    property point beginDrag
+    property bool caught: false
+    property bool isDrag: false
 
     onIsSelectedChanged:  {
-        if (isSelected)
-            textInput1.forceActiveFocus()
+        if (!isSelected)
+            editMode = false;
     }
 
 
     Behavior on opacity { NumberAnimation {}}
     opacity: isSelected ? 1 : 0.4
-
-
-    MouseArea {
-        onClicked:{
-            console.log("hi")
-            if(node){
-                node.isSelected = true;
-                nodeManager.selectItem(node.id)
-
-            }
-        }
-
-        anchors.fill: parent
-        hoverEnabled: true
-        drag.target: textRec
-        drag.axis: Drag.XAndYAxis
-        drag.minimumX: 0
-        drag.minimumY: 0
-    }
-
-
 
 
     ScrollView {
@@ -64,7 +53,6 @@ Rectangle {
         TextArea {
 
             id: textInput1
-//            focus: node.focusTracker
             placeholderText: qsTr("Enter description")
             color: "white"
             selectByMouse: true
@@ -75,16 +63,11 @@ Rectangle {
                     node.contentText = text;
             }
 
-//            onTextChanged1: {
-//                textRec.textChanged1(textInput1.text)
-//            }
 
             background: Rectangle {
                 color: "transparent";
+
             }
-//            onActiveFocusChanged:
-//                if (activeFocus)
-//                    root.selectedItem = textRec.selected
         }
     }
 
@@ -94,7 +77,35 @@ Rectangle {
         NodeTools{}
     }
 
+    MouseArea {
+        enabled: !editMode
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked:{
+            if(node){
+                node.isSelected = true;
+                nodeManager.selectItem(node.id)
+            }
+        }
+        onPressed:{
+            isDrag = true;
+            textRec.beginDrag = Qt.point(mouseX, mouseY);
 
+        }
+        onPositionChanged: {
+            if (isDrag) {
+                node.x = (mouseX - textRec.beginDrag.x) + node.x
+                node.y = (mouseY - textRec.beginDrag.y) + node.y
+            }
+        }
+        onReleased : {
+            isDrag = false;
+        }
+        onDoubleClicked: {
+            editMode = true
+        }
+    }
+}
 //    Component.onCompleted:{
 //        textInput1.forceActiveFocus()
 //    }
@@ -123,5 +134,4 @@ Rectangle {
 //    }
 
 
-}
 

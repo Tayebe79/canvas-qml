@@ -13,35 +13,27 @@ import QtQuick.Window
 
 
 // tasks:
-// 1- grids background
+// - selectedItem/click/doubleClick
+// 1- grids background (almost done)
 // 2- Overview Item
 // 3- Snaping feature
 // 4- Port
-// 5- scrollbar
-// 6- flickable
-// 7-
+// 5- scrollbar (done)
+// 6- flickable (done)
+// 7- dupliacate (done)
+
+//problems: 1- text continue thingy 2- x and y after drag
 
 ApplicationWindow {
+//    flags: Qt.FramelessWindowHint
     id: root
-//    Image {
-//        id: image2
-//        anchors.fill: parent
-//        source: "images/dotGrid.jpg"
-//        opacity: 0.5
-//        z: -1
-//        }
-//    property Rectangle1 selectedItem: null
-
         FontLoader {
             source: "qrc:/qtquick1/fonts/Font Awesome 6 Pro-Regular-400.otf"
         }
 
-
     visible: true
     Universal.theme: Universal.Dark
     Universal.accent: Universal.Violet
-
-
     title: qsTr("Canvas")
     width: 720
     height: 480
@@ -55,6 +47,23 @@ ApplicationWindow {
     }
 
 }
+//        contentWidth: parent.width * 2
+//        contentHeight: parent.height * 2
+
+//        ScrollBar.horizontal: ScrollBar {
+//            id: hbar;
+//            active: vbar.active
+//            anchors.margins: 5
+//            height: 5
+//        }
+//        ScrollBar.vertical: ScrollBar {
+//            id: vbar;
+//            active: hbar.active
+//            anchors.margins: 5
+//            width: 5
+//        }
+
+
 
 //    Item {
 //        property int clicker;

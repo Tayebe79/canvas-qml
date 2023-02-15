@@ -13,7 +13,6 @@ Item {
         border.color: "white"
         anchors.fill: parent
         border.width : mouseArea.containsMouse ? 5 : 1
-
     }
 
     MouseArea {
@@ -24,10 +23,6 @@ Item {
 
         onClicked:{
             container.clicked(container.cellColor);
-//            rectangle1. = 4
         }
-
     }
-
-
 }
