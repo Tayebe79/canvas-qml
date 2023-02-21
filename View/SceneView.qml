@@ -30,7 +30,7 @@ Rectangle {
         anchors.fill: parent
         contentWidth: parent.width * 2
         contentHeight: parent.height * 2
-        interactive: false
+//        interactive: false
 
         // Dot Grid Background
         Grid{

@@ -76,6 +76,22 @@ Rectangle {
         NodeTools{}
     }
 
+
+    function update(){
+        if(isDrag){
+            node.x = x;
+            node.y = y;
+        }
+    }
+    onXChanged: {
+        if(isDrag)
+            update();
+    }
+    onYChanged: {
+        if(isDrag)
+            update();
+    }
+
     //Dragging the cards
     MouseArea {
         enabled: !editMode
@@ -88,20 +104,12 @@ Rectangle {
                 nodeManager.selectItem(node.id)
             }
         }
+        drag.target: parent
         //Dragging 1
         onPressed:{
             isDrag = true;
-            textRec.beginDrag = Qt.point(mouseX, mouseY);
-
         }
-        //Dragging 2
-        onPositionChanged: {
-            if (isDrag) {
-                node.x = (mouseX - textRec.beginDrag.x) + node.x
-                node.y = (mouseY - textRec.beginDrag.y) + node.y
-            }
-        }
-        //Dragging 3
+//        //Dragging 3
         onReleased : {
             isDrag = false;
         }
@@ -144,5 +152,11 @@ Rectangle {
 //        }
 //    }
 
-
+//        //Dragging 2
+//        onPositionChanged: {
+//            if (isDrag) {
+//                node.x = (mouseX - textRec.beginDrag.x) + node.x
+//                node.y = (mouseY - textRec.beginDrag.y) + node.y
+//            }
+//        }
 
